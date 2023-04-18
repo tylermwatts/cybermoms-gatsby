@@ -1,0 +1,45 @@
+@import '../../css/variables.css';
+
+.blogPreviewContainer {
+	margin: 0 4rem;
+	padding: 1rem;
+	background-color: var(--light-gray);
+}
+
+.blogContentPreview {
+	overflow: hidden;
+	max-height: 8rem;
+	line-height: 2.5rem;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	text-overflow: ellipsis;
+	display: block;
+}
+
+.readMoreContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.previewOverlayContainer {
+	position: relative;
+}
+
+.absoluteOverlay {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(
+		to top,
+		rgba(237, 237, 237, 0.6) 10%,
+		rgba(255, 255, 255, 0) 90%
+	);
+}
+
+.authorName {
+	margin: 0 1rem;
+}

@@ -1,0 +1,16 @@
+.authorPhoto {
+	border-radius: 50%;
+	min-width: fit-content;
+}
+
+.avatarAndBioContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 1rem;
+}
+
+.bioContent {
+	margin: 0 2rem;
+	font-size: 1.25rem;
+}

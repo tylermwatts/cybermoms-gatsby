@@ -1,0 +1,39 @@
+@import '../css/variables.css';
+
+.authorInfo {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+}
+
+.authorPhoto {
+	border-radius: 50%;
+}
+
+.blogContent {
+	margin: 2rem;
+}
+
+.codeBlock {
+	border-radius: 5%;
+	background-color: var(--light-gray);
+	color: var(--deep-lavender);
+	max-width: fit-content;
+	padding: 0.5rem;
+}
+
+.authorLinkContainer {
+	display: flex;
+	flex-direction: row;
+}
+
+.authorLink {
+	margin: 0 0.5rem;
+}
+
+.publishDate {
+	color: var(--dark-gray);
+	font-size: 1rem;
+}

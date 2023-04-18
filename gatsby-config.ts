@@ -1,5 +1,9 @@
 import type { GatsbyConfig } from 'gatsby';
 
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
 	siteMetadata: {
 		title: `Cybermoms`,
@@ -33,8 +37,28 @@ const config: GatsbyConfig = {
 		{
 			resolve: 'gatsby-source-contentful',
 			options: {
-				spaceId: process.env.SPACE_ID,
+				spaceId: process.env.CONTENTFUL_SPACE_ID,
 				accessToken: process.env.CONTENT_DELIVERY_API_TOKEN,
+			},
+		},
+		{
+			resolve: `gatsby-omni-font-loader`,
+			options: {
+				enableListener: true,
+				preconnect: [
+					`https://fonts.googleapis.com`,
+					`https://fonts.gstatic.com`,
+				],
+				web: [
+					{
+						name: `Mina`,
+						file: `https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap`,
+					},
+					{
+						name: `Orbitron`,
+						file: `https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap`,
+					},
+				],
 			},
 		},
 	],

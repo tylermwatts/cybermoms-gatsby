@@ -16,7 +16,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^16.0.3",
+    "contentful": "^10.1.0",
     "gatsby": "^5.8.1",
+    "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-source-contentful": "^8.8.0",
@@ -24,12 +27,15 @@
     "gatsby-transformer-remark": "^6.8.0",
     "gatsby-transformer-sharp": "^5.8.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.8.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "dotenv": "^16.0.3",
     "typescript": "^5.0.4"
   }
 }
