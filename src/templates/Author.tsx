@@ -100,3 +100,10 @@ export const query = graphql`
 		}
 	}
 `;
+
+export const Head = ({ data }: { data: AuthorProps['data'] }) => {
+	const {
+		contentfulAuthor: { name },
+	} = data;
+	return <title>CYBERMOMS - {name}'s Author Page</title>;
+};

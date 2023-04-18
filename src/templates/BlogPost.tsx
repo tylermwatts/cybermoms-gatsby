@@ -90,5 +90,5 @@ export const query = graphql`
 `;
 
 export const Head = ({ data }: { data: any }) => (
-	<title>{data.contentfulBlogPost.title}</title>
+	<title>CYBERMOMS - {data.contentfulBlogPost.title}</title>
 );

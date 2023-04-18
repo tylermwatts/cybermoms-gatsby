@@ -68,3 +68,7 @@ export const pageQuery = graphql`
 		}
 	}
 `;
+
+export const Head = () => {
+	return <title>CYBERMOMS - Blog Entries</title>;
+};
