@@ -106,6 +106,7 @@
 		"gatsby-node.js",
 		"./gatsby-config.ts",
 		"./plugins/**/*",
-		"css.d.ts"
+		"css.d.ts",
+		"svg.d.ts"
 	]
 }

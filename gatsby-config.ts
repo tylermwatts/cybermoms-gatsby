@@ -6,8 +6,9 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
 	siteMetadata: {
-		title: `Cybermoms`,
+		title: `CYBERMOMS`,
 		siteUrl: `https://www.yourdomain.tld`,
+		description: 'Family friendly cyber security',
 	},
 	// More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
 	// If you use VSCode you can also use the GraphQL plugin
@@ -59,6 +60,14 @@ const config: GatsbyConfig = {
 						file: `https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap`,
 					},
 				],
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-react-svg',
+			options: {
+				rule: {
+					include: /assets/,
+				},
 			},
 		},
 	],

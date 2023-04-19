@@ -12,8 +12,9 @@
 }
 
 .bigIcon {
-	font-size: 7rem;
+	height: 125px;
 	align-self: center;
+	color: var(--white);
 }
 
 .contactIconContainer {

@@ -2,15 +2,16 @@ import React from 'react';
 import { VscListTree } from 'react-icons/vsc';
 import { FaEnvelope, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 import { Link } from 'gatsby';
+import ContactLink from '../ContactLink/ContactLink';
+import CybermomsLogo from '../../assets/cybermomslogo_bw.svg';
 
 import * as styles from './Header.module.css';
-import ContactLink from '../ContactLink/ContactLink';
 
 export function Header() {
 	return (
 		<header className={styles.header}>
 			<Link className={styles.homeLink} to='/'>
-				<VscListTree className={styles.bigIcon} />
+				<CybermomsLogo className={styles.bigIcon} />
 			</Link>
 			<div className={styles.headerTextAndIconContainer}>
 				<Link className={styles.headerTextHomeLink} to='/'>
