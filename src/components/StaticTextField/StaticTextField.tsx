@@ -9,8 +9,10 @@ import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import * as styles from './StaticTextField.module.css';
 
 export interface StaticTextFieldProps {
-	name: string;
-	body: RenderRichTextData<ContentfulRichTextGatsbyReference>;
+	name: string | null;
+	body: {
+		raw: string | null;
+	} | null;
 }
 
 export function StaticTextField({ body, name }: StaticTextFieldProps) {
@@ -18,24 +20,27 @@ export function StaticTextField({ body, name }: StaticTextFieldProps) {
 		<div className={styles.staticTextFieldContainer}>
 			<h2>{name}</h2>
 			<p>
-				{renderRichText(body, {
-					renderNode: {
-						[INLINES.HYPERLINK]: (node, children) => {
-							const { uri } = node.data;
-							return (
-								<a href={uri} target='_blank'>
-									{children}
-								</a>
-							);
+				{renderRichText(
+					body as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+					{
+						renderNode: {
+							[INLINES.HYPERLINK]: (node, children) => {
+								const { uri } = node.data;
+								return (
+									<a href={uri} target='_blank'>
+										{children}
+									</a>
+								);
+							},
+							[MARKS.BOLD]: (node, children) => (
+								<p style={{ fontWeight: 700 }}>{children}</p>
+							),
+							[BLOCKS.PARAGRAPH]: (node, children) => {
+								return <p className={styles.paragraph}>{children}</p>;
+							},
 						},
-						[MARKS.BOLD]: (node, children) => (
-							<p style={{ fontWeight: 700 }}>{children}</p>
-						),
-						[BLOCKS.PARAGRAPH]: (node, children) => {
-							return <p className={styles.paragraph}>{children}</p>;
-						},
-					},
-				})}
+					}
+				)}
 			</p>
 		</div>
 	);

@@ -1,49 +1,22 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, PageProps, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import * as styles from './Author.module.css';
 import { Layout } from '../components';
 import { formatDate } from '../utils';
 
-export interface AuthorProps {
-	data: {
-		contentfulAuthor: {
-			authorPhoto: {
-				gatsbyImageData: any;
-			};
-			bio: {
-				internal: {
-					content: string;
-				};
-			};
-			name: string;
-		};
-		allContentfulBlogPost: {
-			nodes: Array<{
-				createdAt: string;
-				id: string;
-				slug: string;
-				title: string;
-			}>;
-		};
-	};
-}
-
-export function Author({ data }: AuthorProps) {
+export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 	const {
 		allContentfulBlogPost: { nodes: blogPosts },
-		contentfulAuthor: {
-			authorPhoto,
-			bio: {
-				internal: { content },
-			},
-			name,
-		},
+		contentfulAuthor,
 	} = data;
-	const authorImage = getImage(authorPhoto.gatsbyImageData);
+
+	const authorImage = contentfulAuthor!.authorPhoto?.gatsbyImageData
+		? getImage(contentfulAuthor!.authorPhoto.gatsbyImageData)
+		: undefined;
 	return (
 		<Layout>
-			<h2>Get to know {name}</h2>
+			<h2>Get to know {contentfulAuthor!.name}</h2>
 			<div className={styles.avatarAndBioContainer}>
 				{authorImage && (
 					<GatsbyImage
@@ -52,7 +25,9 @@ export function Author({ data }: AuthorProps) {
 						alt='Author Photo'
 					/>
 				)}
-				<p className={styles.bioContent}>{content}</p>
+				<p className={styles.bioContent}>
+					{contentfulAuthor!.bio?.internal.content}
+				</p>
 			</div>
 			<div>
 				<h2>Author's Posts</h2>
@@ -62,7 +37,7 @@ export function Author({ data }: AuthorProps) {
 						return (
 							<li key={id}>
 								<Link to={`/blog/${slug}`}>{title}</Link>
-								<span> - {formatDate(createdAt)}</span>
+								{createdAt !== null && <span> - {formatDate(createdAt)}</span>}
 							</li>
 						);
 					})}
@@ -74,8 +49,13 @@ export function Author({ data }: AuthorProps) {
 
 export default Author;
 
+export const Head = ({ data }: PageProps<Queries.AuthorsQuery>) => {
+	const { contentfulAuthor } = data;
+	return <title>CYBERMOMS - {contentfulAuthor!.name}'s Author Page</title>;
+};
+
 export const query = graphql`
-	query ($slug: String!) {
+	query Authors($slug: String!) {
 		contentfulAuthor(slug: { eq: $slug }) {
 			authorPhoto {
 				gatsbyImageData(width: 200)
@@ -100,10 +80,3 @@ export const query = graphql`
 		}
 	}
 `;
-
-export const Head = ({ data }: { data: AuthorProps['data'] }) => {
-	const {
-		contentfulAuthor: { name },
-	} = data;
-	return <title>CYBERMOMS - {name}'s Author Page</title>;
-};

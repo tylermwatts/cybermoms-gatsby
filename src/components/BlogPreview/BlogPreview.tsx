@@ -10,10 +10,10 @@ import { Link } from 'gatsby';
 
 export interface BlogPreviewProps {
 	latestBlog: {
-		authorName: string;
-		content: RenderRichTextData<ContentfulRichTextGatsbyReference>;
-		slug: string;
-		title: string;
+		authorName: string | null;
+		content: { raw: string | null } | null;
+		slug: string | null;
+		title: string | null;
 	};
 }
 
@@ -26,7 +26,9 @@ export function BlogPreview({ latestBlog }: BlogPreviewProps) {
 			<div className={styles.previewOverlayContainer}>
 				<div className={styles.absoluteOverlay} />
 				<div className={styles.blogContentPreview}>
-					{renderRichText(content)}
+					{renderRichText(
+						content as RenderRichTextData<ContentfulRichTextGatsbyReference>
+					)}
 				</div>
 			</div>
 			<div className={styles.readMoreContainer}>

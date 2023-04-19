@@ -1,23 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 import { Layout } from '../../components';
 
-export interface AuthorIndexProps {
-	data: {
-		allContentfulAuthor: {
-			nodes: Array<{
-				authorPhoto: {
-					gatsbyImageData: any;
-				};
-				id: string;
-				name: string;
-				slug: string;
-			}>;
-		};
-	};
-}
-
-export function AuthorIndex({ data }: AuthorIndexProps) {
+export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {
 	const {
 		allContentfulAuthor: { nodes },
 	} = data;
@@ -41,20 +26,21 @@ export function AuthorIndex({ data }: AuthorIndexProps) {
 
 export default AuthorIndex;
 
+export const Head = () => {
+	return <title>CYBERMOMS - Blog Authors</title>;
+};
+
 export const pageQuery = graphql`
-	query {
+	query AuthorIndex {
 		allContentfulAuthor {
 			nodes {
 				authorPhoto {
 					gatsbyImageData(width: 100)
 				}
+				id
 				name
 				slug
 			}
 		}
 	}
 `;
-
-export const Head = () => {
-	return <title>CYBERMOMS - Blog Authors</title>;
-};

@@ -7,9 +7,13 @@ const blogLinkContainerStyles = {
 	padding: '2rem',
 };
 
-const IndexPage: React.FC<PageProps<any>> = (props) => {
+const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 	const { allContentfulBlogPost, contentfulStaticTextField } = props.data;
-	const { name, textBody } = contentfulStaticTextField;
+	const { name, textBody } = contentfulStaticTextField || {
+		name: '',
+		textBody: { raw: '' },
+	};
+
 	const [latestBlog] = allContentfulBlogPost.nodes;
 
 	return (
@@ -22,7 +26,7 @@ const IndexPage: React.FC<PageProps<any>> = (props) => {
 					<h2>Latest Blog</h2>
 					<BlogPreview
 						latestBlog={{
-							authorName: latestBlog.author.name,
+							authorName: latestBlog.author!.name,
 							content: latestBlog.content,
 							slug: latestBlog.slug,
 							title: latestBlog.title,
@@ -41,10 +45,10 @@ const IndexPage: React.FC<PageProps<any>> = (props) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Cybermoms</title>;
+export const Head: HeadFC = () => <title>CYBERMOMS</title>;
 
 export const pageQuery = graphql`
-	query {
+	query IndexPage {
 		allContentfulBlogPost(sort: [{ createdAt: DESC }], limit: 1) {
 			nodes {
 				author {
