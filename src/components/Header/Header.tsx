@@ -13,8 +13,10 @@ export function Header() {
 				<VscListTree className={styles.bigIcon} />
 			</Link>
 			<div className={styles.headerTextAndIconContainer}>
-				<h1 className={styles.headerText}>CYBERMOMS</h1>
-				<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+				<Link className={styles.headerTextHomeLink} to='/'>
+					<h1 className={styles.headerText}>CYBERMOMS</h1>
+					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+				</Link>
 				<div className={styles.contactIconContainer}>
 					<ContactLink href={'http://instagram.com'}>
 						<FaInstagram className={styles.contactIcon} />

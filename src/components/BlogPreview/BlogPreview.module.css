@@ -43,3 +43,18 @@
 .authorName {
 	margin: 0 1rem;
 }
+
+@media screen and (max-width: 750px) {
+	.blogPreviewContainer {
+		margin: 0;
+	}
+
+	.authorName {
+		margin: 0;
+	}
+
+	.readMoreContainer {
+		flex-direction: column;
+		align-items: flex-end;
+	}
+}

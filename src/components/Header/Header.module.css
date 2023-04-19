@@ -8,10 +8,11 @@
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
+	flex-wrap: wrap;
 }
 
 .bigIcon {
-	font-size: 8rem;
+	font-size: 7rem;
 	align-self: center;
 }
 
@@ -53,4 +54,23 @@
 	flex-direction: column;
 	justify-content: center;
 	color: var(--white);
+}
+
+.headerTextHomeLink {
+	color: var(--white);
+	text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+	.homeLink {
+		display: none;
+	}
+
+	.headerText {
+		font-size: 2rem;
+	}
+
+	.subHeaderText {
+		font-size: 1.25rem;
+	}
 }
