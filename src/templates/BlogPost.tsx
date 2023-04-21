@@ -8,7 +8,7 @@ import {
 import { INLINES, MARKS } from '@contentful/rich-text-types';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import * as styles from './BlogPost.module.css';
-import { Layout } from '../components';
+import { Layout, SEO } from '../components';
 import { formatDate } from '../utils';
 
 export function BlogPost({
@@ -90,7 +90,7 @@ export function BlogPost({
 export default BlogPost;
 
 export const Head = ({ data }: PageProps<Queries.BlogPostQuery>) => (
-	<title>CYBERMOMS - {data.contentfulBlogPost!.title}</title>
+	<SEO title={`CYBERMOMS - ${data.contentfulBlogPost!.title}`} />
 );
 
 export const query = graphql`

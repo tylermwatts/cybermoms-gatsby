@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../../components';
+import { Layout, SEO } from '../../components';
 import { Link, PageProps, graphql } from 'gatsby';
 import { formatDate } from '../../utils';
 
@@ -32,7 +32,7 @@ export function BlogIndex({ data }: PageProps<Queries.BlogIndexQuery>) {
 export default BlogIndex;
 
 export const Head = () => {
-	return <title>CYBERMOMS - Blog Entries</title>;
+	return <SEO title='CYBERMOMS - Blog Entries' />;
 };
 
 export const pageQuery = graphql`
@@ -50,4 +50,3 @@ export const pageQuery = graphql`
 		}
 	}
 `;
-

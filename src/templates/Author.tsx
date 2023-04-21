@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, PageProps, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import * as styles from './Author.module.css';
-import { Layout } from '../components';
+import { Layout, SEO } from '../components';
 import { formatDate } from '../utils';
+import * as styles from './Author.module.css';
 
 export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 	const {
@@ -51,7 +51,7 @@ export default Author;
 
 export const Head = ({ data }: PageProps<Queries.AuthorsQuery>) => {
 	const { contentfulAuthor } = data;
-	return <title>CYBERMOMS - {contentfulAuthor!.name}'s Author Page</title>;
+	return <SEO title={`CYBERMOMS - ${contentfulAuthor!.name}'s Author Page`} />;
 };
 
 export const query = graphql`

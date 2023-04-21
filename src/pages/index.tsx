@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HeadFC, Link, PageProps, graphql } from 'gatsby';
 import './globals.css';
-import { BlogPreview, Layout, StaticTextField } from '../components';
+import { BlogPreview, Layout, SEO, StaticTextField } from '../components';
 
 const blogLinkContainerStyles = {
 	padding: '2rem',
@@ -45,7 +45,7 @@ const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>CYBERMOMS</title>;
+export const Head: HeadFC = () => <SEO />;
 
 export const pageQuery = graphql`
 	query IndexPage {

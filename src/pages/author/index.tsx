@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
-import { Layout } from '../../components';
+import { Layout, SEO } from '../../components';
 
 export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {
 	const {
@@ -27,7 +27,7 @@ export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {
 export default AuthorIndex;
 
 export const Head = () => {
-	return <title>CYBERMOMS - Blog Authors</title>;
+	return <SEO title='CYBERMOMS - Authors' />;
 };
 
 export const pageQuery = graphql`
