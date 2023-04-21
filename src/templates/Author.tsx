@@ -11,8 +11,8 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 		contentfulAuthor,
 	} = data;
 
-	const authorImage = contentfulAuthor?.authorPhoto?.gatsbyImageData
-		? getImage(contentfulAuthor.authorPhoto.gatsbyImageData)
+	const authorImage = contentfulAuthor?.photo.gatsbyImageData
+		? getImage(contentfulAuthor.photo.gatsbyImageData)
 		: undefined;
 	return (
 		<Layout>
@@ -25,9 +25,7 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 						alt='Author Photo'
 					/>
 				)}
-				<p className={styles.bioContent}>
-					{contentfulAuthor?.bio?.internal.content}
-				</p>
+				<p className={styles.bioContent}>{contentfulAuthor?.bio?.bio}</p>
 			</div>
 			<div>
 				<h2>Author's Posts</h2>
@@ -57,13 +55,11 @@ export const Head = ({ data }: PageProps<Queries.AuthorsQuery>) => {
 export const query = graphql`
 	query Authors($slug: String!) {
 		contentfulAuthor(slug: { eq: $slug }) {
-			authorPhoto {
+			photo {
 				gatsbyImageData(width: 200)
 			}
 			bio {
-				internal {
-					content
-				}
+				bio
 			}
 			name
 		}

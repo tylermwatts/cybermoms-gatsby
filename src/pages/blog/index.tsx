@@ -24,7 +24,7 @@ export function BlogIndex({ data }: PageProps<Queries.BlogIndexQuery>) {
 							<Link to={`/blog/${slug}`}>{title}</Link>
 							<span>
 								{' '}
-								- {formatDate(createdAt)} - by {author.name}
+								- {formatDate(createdAt)} - by {author?.name}
 							</span>
 						</li>
 					);

@@ -15,15 +15,9 @@ export function BlogPost({
 	data,
 }: PropsWithChildren<PageProps<Queries.BlogPostQuery>>) {
 	const { contentfulBlogPost } = data;
-	const hasAuthorPhoto = Boolean(
-		contentfulBlogPost &&
-			contentfulBlogPost.author &&
-			contentfulBlogPost.author.authorPhoto
+	const authorImage = getImage(
+		contentfulBlogPost?.author.photo.gatsbyImageData || null
 	);
-	const authorImage = hasAuthorPhoto
-		? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		  getImage(contentfulBlogPost!.author.authorPhoto.gatsbyImageData)
-		: undefined;
 	return (
 		<Layout>
 			<div>
@@ -76,10 +70,10 @@ export function BlogPost({
 				<div className={styles.authorLinkContainer}>
 					<p>Written by </p>
 					<Link
-						to={`/author/${contentfulBlogPost?.author.slug}`}
+						to={`/author/${contentfulBlogPost?.author?.slug}`}
 						className={styles.authorLink}
 					>
-						{contentfulBlogPost?.author.name}
+						{contentfulBlogPost?.author?.name}
 					</Link>
 				</div>
 			</div>
@@ -104,7 +98,7 @@ export const query = graphql`
 			updatedAt
 			author {
 				name
-				authorPhoto {
+				photo {
 					gatsbyImageData(width: 100)
 				}
 				slug

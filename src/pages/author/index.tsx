@@ -37,7 +37,7 @@ export const pageQuery = graphql`
 	query AuthorIndex {
 		allContentfulAuthor {
 			nodes {
-				authorPhoto {
+				photo {
 					gatsbyImageData(width: 100)
 				}
 				id
