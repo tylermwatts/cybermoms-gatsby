@@ -1,10 +1,13 @@
+// external
 import React, { PropsWithChildren } from 'react';
+
+// hooks
 import { useSiteMetadata } from '../../hooks';
 
 export interface SEOProps {
-	title?: string;
 	description?: string;
 	pathname?: string;
+	title?: string;
 }
 
 export const SEO = ({
@@ -21,14 +24,15 @@ export const SEO = ({
 	} = useSiteMetadata();
 
 	const seo = {
-		title: title || defaultTitle,
 		description: description || defaultDescription,
+		title: title || defaultTitle,
 		url: `${siteUrl}${pathname || ``}`,
 		// twitterUsername,
 	};
 
 	return (
 		<>
+			<html lang='en' />
 			<title>{seo.title}</title>
 			<meta name='description' content={seo.description} />
 			{/* <meta name="twitter:card" content="summary_large_image" />

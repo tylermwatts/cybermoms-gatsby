@@ -1,9 +1,9 @@
+import * as styles from './Author.module.css';
 import React from 'react';
-import { Link, PageProps, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Layout, SEO } from '../components';
+import { Link, PageProps, graphql } from 'gatsby';
 import { formatDate } from '../utils';
-import * as styles from './Author.module.css';
 
 export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 	const {
@@ -11,12 +11,12 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 		contentfulAuthor,
 	} = data;
 
-	const authorImage = contentfulAuthor!.authorPhoto?.gatsbyImageData
-		? getImage(contentfulAuthor!.authorPhoto.gatsbyImageData)
+	const authorImage = contentfulAuthor?.authorPhoto?.gatsbyImageData
+		? getImage(contentfulAuthor.authorPhoto.gatsbyImageData)
 		: undefined;
 	return (
 		<Layout>
-			<h2>Get to know {contentfulAuthor!.name}</h2>
+			<h2>Get to know {contentfulAuthor?.name}</h2>
 			<div className={styles.avatarAndBioContainer}>
 				{authorImage && (
 					<GatsbyImage
@@ -26,7 +26,7 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 					/>
 				)}
 				<p className={styles.bioContent}>
-					{contentfulAuthor!.bio?.internal.content}
+					{contentfulAuthor?.bio?.internal.content}
 				</p>
 			</div>
 			<div>
@@ -51,7 +51,7 @@ export default Author;
 
 export const Head = ({ data }: PageProps<Queries.AuthorsQuery>) => {
 	const { contentfulAuthor } = data;
-	return <SEO title={`CYBERMOMS - ${contentfulAuthor!.name}'s Author Page`} />;
+	return <SEO title={`CYBERMOMS - ${contentfulAuthor?.name}'s Author Page`} />;
 };
 
 export const query = graphql`

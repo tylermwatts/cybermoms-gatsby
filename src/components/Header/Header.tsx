@@ -1,10 +1,15 @@
+// external
 import React from 'react';
-import { VscListTree } from 'react-icons/vsc';
 import { FaEnvelope, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 import { Link } from 'gatsby';
+
+// components
 import ContactLink from '../ContactLink/ContactLink';
+
+// assets
 import CybermomsLogo from '../../assets/cybermomslogo_bw.svg';
 
+// styles
 import * as styles from './Header.module.css';
 
 export function Header() {
@@ -19,13 +24,13 @@ export function Header() {
 					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
 				</Link>
 				<div className={styles.contactIconContainer}>
-					<ContactLink href={'http://instagram.com'}>
+					<ContactLink href={'http://instagram.com'} name='Instagram Link'>
 						<FaInstagram className={styles.contactIcon} />
 					</ContactLink>
-					<ContactLink href={'http://facebook.com'}>
+					<ContactLink href={'http://facebook.com'} name='Facebook Link'>
 						<FaFacebookSquare className={styles.contactIcon} />
 					</ContactLink>
-					<ContactLink href={'mailto:admin@cybermoms.com'}>
+					<ContactLink href={'mailto:admin@cybermoms.com'} name='Email Link'>
 						<FaEnvelope className={styles.contactIcon} />
 					</ContactLink>
 				</div>

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { HeadFC, Link, PageProps, graphql } from 'gatsby';
 import './globals.css';
+import * as React from 'react';
 import { BlogPreview, Layout, SEO, StaticTextField } from '../components';
+import { HeadFC, Link, PageProps, graphql } from 'gatsby';
 
 const blogLinkContainerStyles = {
 	padding: '2rem',
@@ -26,7 +26,7 @@ const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 					<h2>Latest Blog</h2>
 					<BlogPreview
 						latestBlog={{
-							authorName: latestBlog.author!.name,
+							authorName: latestBlog.author.name,
 							content: latestBlog.content,
 							slug: latestBlog.slug,
 							title: latestBlog.title,

@@ -1,16 +1,24 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import type { GatsbyConfig } from 'gatsby';
 
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
 
+const path = require('path');
+// Get paths of Gatsby's required rules, which as of writing is located at:
+// https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
+// gatsby/src/utils/eslint-rules
+const gatsbyRequiredRules = path.join(
+	process.cwd(),
+	'node_modules',
+	'gatsby',
+	'dist',
+	'utils',
+	'eslint-rules'
+);
+
 const config: GatsbyConfig = {
-	siteMetadata: {
-		title: `CYBERMOMS`,
-		siteUrl: `https://www.yourdomain.tld`,
-		description: 'Family friendly cyber security',
-		image: './src/images/icon.png',
-	},
 	// More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
 	// If you use VSCode you can also use the GraphQL plugin
 	// Learn more at: https://gatsby.dev/graphql-typegen
@@ -21,30 +29,29 @@ const config: GatsbyConfig = {
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',
 		{
-			resolve: 'gatsby-source-filesystem',
+			__key: 'images',
 			options: {
 				name: 'images',
 				path: './src/images/',
 			},
-			__key: 'images',
+			resolve: 'gatsby-source-filesystem',
 		},
 		{
-			resolve: 'gatsby-source-filesystem',
+			__key: 'pages',
 			options: {
 				name: 'pages',
 				path: './src/pages/',
 			},
-			__key: 'pages',
+			resolve: 'gatsby-source-filesystem',
 		},
 		{
-			resolve: 'gatsby-source-contentful',
 			options: {
-				spaceId: process.env.CONTENTFUL_SPACE_ID,
 				accessToken: process.env.CONTENT_DELIVERY_API_TOKEN,
+				spaceId: process.env.CONTENTFUL_SPACE_ID,
 			},
+			resolve: 'gatsby-source-contentful',
 		},
 		{
-			resolve: `gatsby-omni-font-loader`,
 			options: {
 				enableListener: true,
 				preconnect: [
@@ -53,25 +60,41 @@ const config: GatsbyConfig = {
 				],
 				web: [
 					{
-						name: `Mina`,
 						file: `https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap`,
+						name: `Mina`,
 					},
 					{
-						name: `Orbitron`,
 						file: `https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap`,
+						name: `Orbitron`,
 					},
 				],
 			},
+			resolve: `gatsby-omni-font-loader`,
 		},
 		{
-			resolve: 'gatsby-plugin-react-svg',
 			options: {
 				rule: {
 					include: /assets/,
 				},
 			},
+			resolve: 'gatsby-plugin-react-svg',
+		},
+		{
+			options: {
+				exclude: ['node_modules', 'bower_components', '.cache', 'public'],
+				extensions: ['js', 'jsx', 'ts', 'tsx'],
+				rulePaths: [gatsbyRequiredRules],
+				stages: ['develop'],
+			},
+			resolve: 'gatsby-plugin-eslint',
 		},
 	],
+	siteMetadata: {
+		description: 'Family friendly cyber security',
+		image: './src/images/icon.png',
+		siteUrl: `https://www.yourdomain.tld`,
+		title: `CYBERMOMS`,
+	},
 };
 
 export default config;

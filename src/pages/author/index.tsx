@@ -1,5 +1,8 @@
+// external
 import React from 'react';
-import { graphql, Link, PageProps } from 'gatsby';
+import { Link, PageProps, graphql } from 'gatsby';
+
+// components
 import { Layout, SEO } from '../../components';
 
 export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {

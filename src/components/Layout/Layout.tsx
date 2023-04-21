@@ -1,6 +1,11 @@
+// external
 import React, { PropsWithChildren } from 'react';
-import * as styles from './Layout.module.css';
+
+// components
 import Header from '../Header/Header';
+
+// styles
+import * as styles from './Layout.module.css';
 
 export function Layout({ children }: PropsWithChildren) {
 	return (

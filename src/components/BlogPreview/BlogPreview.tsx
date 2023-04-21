@@ -1,12 +1,14 @@
+// external
 import React from 'react';
 import {
 	ContentfulRichTextGatsbyReference,
 	RenderRichTextData,
 	renderRichText,
 } from 'gatsby-source-contentful/rich-text';
-
-import * as styles from './BlogPreview.module.css';
 import { Link } from 'gatsby';
+
+// styles
+import * as styles from './BlogPreview.module.css';
 
 export interface BlogPreviewProps {
 	latestBlog: {

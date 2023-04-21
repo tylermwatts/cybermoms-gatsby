@@ -1,6 +1,11 @@
+// external
 import React from 'react';
-import { Layout, SEO } from '../../components';
 import { Link, PageProps, graphql } from 'gatsby';
+
+// components
+import { Layout, SEO } from '../../components';
+
+// utils
 import { formatDate } from '../../utils';
 
 export function BlogIndex({ data }: PageProps<Queries.BlogIndexQuery>) {
@@ -19,7 +24,7 @@ export function BlogIndex({ data }: PageProps<Queries.BlogIndexQuery>) {
 							<Link to={`/blog/${slug}`}>{title}</Link>
 							<span>
 								{' '}
-								- {formatDate(createdAt!)} - by {author?.name}
+								- {formatDate(createdAt)} - by {author.name}
 							</span>
 						</li>
 					);

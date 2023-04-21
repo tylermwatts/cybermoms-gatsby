@@ -1,18 +1,20 @@
+// external
 import React from 'react';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import {
 	ContentfulRichTextGatsbyReference,
 	RenderRichTextData,
 	renderRichText,
 } from 'gatsby-source-contentful/rich-text';
-import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
+// styles
 import * as styles from './StaticTextField.module.css';
 
 export interface StaticTextFieldProps {
-	name: string | null;
 	body: {
 		raw: string | null;
 	} | null;
+	name: string | null;
 }
 
 export function StaticTextField({ body, name }: StaticTextFieldProps) {

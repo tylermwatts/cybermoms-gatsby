@@ -1,14 +1,14 @@
+import * as styles from './BlogPost.module.css';
 import React, { PropsWithChildren } from 'react';
-import { graphql, Link, PageProps } from 'gatsby';
 import {
 	ContentfulRichTextGatsbyReference,
-	renderRichText,
 	RenderRichTextData,
+	renderRichText,
 } from 'gatsby-source-contentful/rich-text';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { INLINES, MARKS } from '@contentful/rich-text-types';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-import * as styles from './BlogPost.module.css';
 import { Layout, SEO } from '../components';
+import { Link, PageProps, graphql } from 'gatsby';
 import { formatDate } from '../utils';
 
 export function BlogPost({
@@ -21,23 +21,23 @@ export function BlogPost({
 			contentfulBlogPost.author.authorPhoto
 	);
 	const authorImage = hasAuthorPhoto
-		? getImage(contentfulBlogPost!.author!.authorPhoto!.gatsbyImageData)
+		? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		  getImage(contentfulBlogPost!.author.authorPhoto.gatsbyImageData)
 		: undefined;
 	return (
 		<Layout>
 			<div>
-				<h2>{contentfulBlogPost!.title}</h2>
-				{contentfulBlogPost!.createdAt && (
+				<h2>{contentfulBlogPost?.title}</h2>
+				{contentfulBlogPost?.createdAt && (
 					<p className={styles.publishDate}>
-						Published {formatDate(contentfulBlogPost!.createdAt)}
+						Published {formatDate(contentfulBlogPost.createdAt)}
 					</p>
 				)}
 			</div>
-			{contentfulBlogPost!.content !== null && (
+			{contentfulBlogPost?.content && (
 				<div className={styles.blogContent}>
 					{renderRichText(
-						contentfulBlogPost!
-							.content as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+						contentfulBlogPost.content as RenderRichTextData<ContentfulRichTextGatsbyReference>,
 						{
 							renderMark: {
 								[MARKS.CODE]: (text) => {
@@ -76,10 +76,10 @@ export function BlogPost({
 				<div className={styles.authorLinkContainer}>
 					<p>Written by </p>
 					<Link
-						to={`/author/${contentfulBlogPost!.author!.slug}`}
+						to={`/author/${contentfulBlogPost?.author.slug}`}
 						className={styles.authorLink}
 					>
-						{contentfulBlogPost!.author!.name}
+						{contentfulBlogPost?.author.name}
 					</Link>
 				</div>
 			</div>
@@ -90,7 +90,7 @@ export function BlogPost({
 export default BlogPost;
 
 export const Head = ({ data }: PageProps<Queries.BlogPostQuery>) => (
-	<SEO title={`CYBERMOMS - ${data.contentfulBlogPost!.title}`} />
+	<SEO title={`CYBERMOMS - ${data.contentfulBlogPost?.title}`} />
 );
 
 export const query = graphql`
