@@ -5,7 +5,7 @@
 }
 
 .paragraph {
-	text-align: center;
+	text-align: left;
 	font-size: 1.25rem;
 	margin: 0 2rem;
 }
@@ -15,5 +15,18 @@
 		margin: 0 0.5rem;
 		font-size: 1rem;
 		text-align: left;
+	}
+}
+
+@media screen and (min-width: 1080px) {
+	.staticTextFieldContainer {
+		max-width: 75%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.staticTextFieldContainer {
+		max-width: 50%;
 	}
 }

@@ -1,9 +1,16 @@
-import * as styles from './Author.module.css';
+// external
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { Layout, SEO } from '../components';
 import { Link, PageProps, graphql } from 'gatsby';
+
+// components
+import { Layout, SEO } from '../components';
+
+// utils
 import { formatDate } from '../utils';
+
+// styles
+import * as styles from './Author.module.css';
 
 export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 	const {

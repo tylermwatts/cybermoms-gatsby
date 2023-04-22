@@ -1,11 +1,15 @@
-import './globals.css';
-import * as React from 'react';
-import { BlogPreview, Layout, SEO, StaticTextField } from '../components';
+// external
+import React from 'react';
 import { HeadFC, Link, PageProps, graphql } from 'gatsby';
 
-const blogLinkContainerStyles = {
-	padding: '2rem',
-};
+// components
+import { BlogPreview, Layout, SEO, StaticTextField } from '../components';
+
+// global css
+import './globals.css';
+
+// styles
+import * as styles from './index.module.css';
 
 const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 	const { allContentfulBlogPost, contentfulStaticTextField } = props.data;
@@ -23,17 +27,17 @@ const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 					<StaticTextField body={textBody} name={name} />
 				</article>
 				<article id='latest blog'>
-					<h2>Latest Blog</h2>
 					<BlogPreview
-						latestBlog={{
+						blogToPreview={{
 							authorName: latestBlog.author.name,
 							content: latestBlog.content,
 							slug: latestBlog.slug,
 							title: latestBlog.title,
 						}}
+						headerText='Latest Blog'
 					/>
 				</article>
-				<div style={blogLinkContainerStyles}>
+				<div className={styles.blogLinkContainerStyles}>
 					<Link to='/blog'>
 						Click here to catch up on some of our other blog posts!
 					</Link>
