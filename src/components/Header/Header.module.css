@@ -4,11 +4,22 @@
 	padding: 1rem;
 	background-color: var(--pink);
 	color: var(--white);
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.mainHeaderSection {
 	display: flex;
 	justify-content: center;
-	gap: 2rem;
 	flex-wrap: wrap;
+	text-align: center;
+	gap: 2rem;
+}
+
+.siteNavLink {
+	color: var(--white);
+	font-size: 1.25rem;
 }
 
 .bigIcon {
@@ -60,6 +71,12 @@
 .headerTextHomeLink {
 	color: var(--white);
 	text-decoration: none;
+}
+
+.siteNavContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 
 @media screen and (max-width: 750px) {

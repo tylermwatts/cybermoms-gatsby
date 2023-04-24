@@ -13,7 +13,7 @@ export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {
 	return (
 		<Layout>
 			<h2>Get to know our authors</h2>
-			<h3>Sorted by most recent posts</h3>
+			<p>Sorted by most recent posts</p>
 			<ul>
 				{nodes.map((node) => {
 					const { blog_post, id, name, slug } = node;

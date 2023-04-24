@@ -15,26 +15,45 @@ import * as styles from './Header.module.css';
 export function Header() {
 	return (
 		<header className={styles.header}>
-			<Link className={styles.homeLink} to='/'>
-				<CybermomsLogo className={styles.bigIcon} />
-			</Link>
-			<div className={styles.headerTextAndIconContainer}>
-				<Link className={styles.headerTextHomeLink} to='/'>
-					<h1 className={styles.headerText}>CYBERMOMS</h1>
-					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+			<div className={styles.mainHeaderSection}>
+				<Link className={styles.homeLink} to='/'>
+					<CybermomsLogo className={styles.bigIcon} />
 				</Link>
-				<div className={styles.contactIconContainer}>
-					<ContactLink href={'http://instagram.com'} name='Instagram Link'>
-						<FaInstagram className={styles.contactIcon} />
-					</ContactLink>
-					<ContactLink href={'http://facebook.com'} name='Facebook Link'>
-						<FaFacebookSquare className={styles.contactIcon} />
-					</ContactLink>
-					<ContactLink href={'mailto:admin@cybermoms.com'} name='Email Link'>
-						<FaEnvelope className={styles.contactIcon} />
-					</ContactLink>
+				<div className={styles.headerTextAndIconContainer}>
+					<Link className={styles.headerTextHomeLink} to='/'>
+						<h1 className={styles.headerText}>CYBERMOMS</h1>
+						<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+					</Link>
+					<div className={styles.contactIconContainer}>
+						<ContactLink
+							href={'http://instagram.com/cybermoms'}
+							name='Instagram Link'
+						>
+							<FaInstagram className={styles.contactIcon} />
+						</ContactLink>
+						<ContactLink
+							href={'http://facebook.com/cybermoms'}
+							name='Facebook Link'
+						>
+							<FaFacebookSquare className={styles.contactIcon} />
+						</ContactLink>
+						<ContactLink href={'mailto:admin@cybermoms.io'} name='Email Link'>
+							<FaEnvelope className={styles.contactIcon} />
+						</ContactLink>
+					</div>
 				</div>
 			</div>
+			<nav className={styles.siteNavContainer}>
+				<Link className={styles.siteNavLink} to='/'>
+					Home
+				</Link>
+				<Link className={styles.siteNavLink} to='/blog'>
+					Blog Posts
+				</Link>
+				<Link className={styles.siteNavLink} to='/author'>
+					Authors
+				</Link>
+			</nav>
 		</header>
 	);
 }
