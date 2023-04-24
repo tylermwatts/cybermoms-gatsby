@@ -61,6 +61,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+	width: 100%;
 }
 
 .siteNavLink {
@@ -87,5 +88,18 @@
 
 	.contactIcon {
 		font-size: 2rem;
+	}
+}
+
+@media screen and (min-width: 1080px) {
+	.siteNavContainer {
+		margin: 0 auto;
+		max-width: 75%;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.siteNavContainer {
+		max-width: 50%;
 	}
 }
