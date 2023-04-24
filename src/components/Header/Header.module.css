@@ -17,12 +17,7 @@
 	gap: 2rem;
 }
 
-.siteNavLink {
-	color: var(--white);
-	font-size: 1.25rem;
-}
-
-.bigIcon {
+.cybermomsLogo {
 	height: 125px;
 	align-self: center;
 	color: var(--white);
@@ -33,6 +28,7 @@
 	flex-direction: row;
 	justify-content: space-evenly;
 	padding: 1rem 0;
+	flex-grow: 1;
 }
 
 .contactIcon {
@@ -61,27 +57,24 @@
 	font-size: 1.5rem;
 }
 
-.homeLink {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	color: var(--white);
-}
-
-.headerTextHomeLink {
-	color: var(--white);
-	text-decoration: none;
-}
-
 .siteNavContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
 
+.siteNavLink {
+	color: var(--white);
+	font-size: 1.25rem;
+}
+
 @media screen and (max-width: 750px) {
-	.homeLink {
-		display: none;
+	.mainHeaderSection {
+		gap: 0;
+	}
+
+	.cybermomsLogo {
+		height: 75px;
 	}
 
 	.headerText {
@@ -89,6 +82,10 @@
 	}
 
 	.subHeaderText {
-		font-size: 1.25rem;
+		display: none;
+	}
+
+	.contactIcon {
+		font-size: 2rem;
 	}
 }

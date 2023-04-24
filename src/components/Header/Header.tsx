@@ -16,14 +16,10 @@ export function Header() {
 	return (
 		<header className={styles.header}>
 			<div className={styles.mainHeaderSection}>
-				<Link className={styles.homeLink} to='/'>
-					<CybermomsLogo className={styles.bigIcon} />
-				</Link>
+				<CybermomsLogo className={styles.cybermomsLogo} />
 				<div className={styles.headerTextAndIconContainer}>
-					<Link className={styles.headerTextHomeLink} to='/'>
-						<h1 className={styles.headerText}>CYBERMOMS</h1>
-						<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
-					</Link>
+					<h1 className={styles.headerText}>CYBERMOMS</h1>
+					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
 					<div className={styles.contactIconContainer}>
 						<ContactLink
 							href={'http://instagram.com/cybermoms'}
