@@ -43,3 +43,16 @@
 		margin: 1rem 0;
 	}
 }
+
+@media screen and (min-width: 1080px) {
+	.blogPostContainer {
+		margin: 0 auto;
+		max-width: 75%;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.blogPostContainer {
+		max-width: 50%;
+	}
+}

@@ -34,20 +34,24 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 				)}
 				<p className={styles.bioContent}>{contentfulAuthor?.bio?.bio}</p>
 			</div>
-			<div>
-				<h2>Author's Posts</h2>
-				<ul>
-					{blogPosts.map((post) => {
-						const { createdAt, id, slug, title } = post;
-						return (
-							<li key={id}>
-								<Link to={`/blog/${slug}`}>{title}</Link>
-								{createdAt !== null && <span> - {formatDate(createdAt)}</span>}
-							</li>
-						);
-					})}
-				</ul>
-			</div>
+			{blogPosts.length ? (
+				<div>
+					<h2>Author's Posts</h2>
+					<ul>
+						{blogPosts.map((post) => {
+							const { createdAt, id, slug, title } = post;
+							return (
+								<li key={id}>
+									<Link to={`/blog/${slug}`}>{title}</Link>
+									{createdAt !== null && (
+										<span> - {formatDate(createdAt)}</span>
+									)}
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			) : null}
 		</Layout>
 	);
 }

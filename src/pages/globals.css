@@ -27,6 +27,10 @@ h2 {
 	text-transform: uppercase;
 }
 
+h3 {
+	font-size: 2rem;
+}
+
 .react-icons {
 	vertical-align: middle;
 }
@@ -34,5 +38,8 @@ h2 {
 @media screen and (max-width: 750px) {
 	h2 {
 		font-size: 1.5rem;
+	}
+	h3 {
+		font-size: 1.25rem;
 	}
 }

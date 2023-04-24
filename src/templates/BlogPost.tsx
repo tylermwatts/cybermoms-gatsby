@@ -20,61 +20,61 @@ export function BlogPost({
 	);
 	return (
 		<Layout>
-			<div>
+			<div className={styles.blogPostContainer}>
 				<h2>{contentfulBlogPost?.title}</h2>
 				{contentfulBlogPost?.createdAt && (
 					<p className={styles.publishDate}>
 						Published {formatDate(contentfulBlogPost.createdAt)}
 					</p>
 				)}
-			</div>
-			{contentfulBlogPost?.content && (
-				<div className={styles.blogContent}>
-					{renderRichText(
-						contentfulBlogPost.content as RenderRichTextData<ContentfulRichTextGatsbyReference>,
-						{
-							renderMark: {
-								[MARKS.CODE]: (text) => {
-									return (
-										<div className={styles.codeBlock}>
-											<code>{text}</code>
-										</div>
-									);
+				{contentfulBlogPost?.content && (
+					<div className={styles.blogContent}>
+						{renderRichText(
+							contentfulBlogPost.content as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+							{
+								renderMark: {
+									[MARKS.CODE]: (text) => {
+										return (
+											<div className={styles.codeBlock}>
+												<code>{text}</code>
+											</div>
+										);
+									},
 								},
-							},
-							renderNode: {
-								[INLINES.HYPERLINK]: (node, children) => {
-									const { uri } = node.data;
-									return (
-										<a href={uri} target='_blank'>
-											{children}
-										</a>
-									);
+								renderNode: {
+									[INLINES.HYPERLINK]: (node, children) => {
+										const { uri } = node.data;
+										return (
+											<a href={uri} target='_blank'>
+												{children}
+											</a>
+										);
+									},
+									[MARKS.BOLD]: (node, children) => (
+										<p style={{ fontWeight: 700 }}>{children}</p>
+									),
 								},
-								[MARKS.BOLD]: (node, children) => (
-									<p style={{ fontWeight: 700 }}>{children}</p>
-								),
-							},
-						}
-					)}
-				</div>
-			)}
-			<div className={styles.authorInfo}>
-				{authorImage && (
-					<GatsbyImage
-						className={styles.authorPhoto}
-						image={authorImage}
-						alt='Author Photo'
-					/>
+							}
+						)}
+					</div>
 				)}
-				<div className={styles.authorLinkContainer}>
-					<p>Written by </p>
-					<Link
-						to={`/author/${contentfulBlogPost?.author?.slug}`}
-						className={styles.authorLink}
-					>
-						{contentfulBlogPost?.author?.name}
-					</Link>
+				<div className={styles.authorInfo}>
+					{authorImage && (
+						<GatsbyImage
+							className={styles.authorPhoto}
+							image={authorImage}
+							alt='Author Photo'
+						/>
+					)}
+					<div className={styles.authorLinkContainer}>
+						<p>Written by </p>
+						<Link
+							to={`/author/${contentfulBlogPost?.author?.slug}`}
+							className={styles.authorLink}
+						>
+							{contentfulBlogPost?.author?.name}
+						</Link>
+					</div>
 				</div>
 			</div>
 		</Layout>

@@ -12,13 +12,17 @@ export function AuthorIndex({ data }: PageProps<Queries.AuthorIndexQuery>) {
 
 	return (
 		<Layout>
-			<p>Get to know our authors!</p>
+			<h2>Get to know our authors</h2>
+			<h3>Sorted by most recent posts</h3>
 			<ul>
 				{nodes.map((node) => {
-					const { id, name, slug } = node;
+					const { blog_post, id, name, slug } = node;
 					return (
 						<li key={id}>
 							<Link to={`/author/${slug}`}>{name}</Link>
+							{blog_post &&
+								blog_post.length >= 0 &&
+								` - ${blog_post.length} posts`}
 						</li>
 					);
 				})}
@@ -35,7 +39,7 @@ export const Head = () => {
 
 export const pageQuery = graphql`
 	query AuthorIndex {
-		allContentfulAuthor {
+		allContentfulAuthor(sort: { blog_post: { createdAt: DESC } }) {
 			nodes {
 				photo {
 					gatsbyImageData(width: 100)
@@ -43,6 +47,9 @@ export const pageQuery = graphql`
 				id
 				name
 				slug
+				blog_post {
+					id
+				}
 			}
 		}
 	}

@@ -1,18 +1,14 @@
 @import '../../css/variables.css';
 
-.blogPreviewContainer {
-	margin: 0 4rem;
-}
-
 .blogPreview {
-	padding: 1rem;
+	margin: 1rem 4rem;
 	background-color: var(--light-gray);
 }
 
 .blogContentPreview {
 	overflow: hidden;
 	max-height: 8rem;
-	line-height: 2.5rem;
+	line-height: 1.5rem;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
 	text-overflow: ellipsis;
