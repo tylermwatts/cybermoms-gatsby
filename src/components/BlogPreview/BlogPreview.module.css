@@ -1,8 +1,12 @@
 @import '../../css/variables.css';
 
-.blogPreview {
+.blogPreview,
+.readMoreContainer {
 	margin: 0 2rem;
 	padding: 1rem;
+}
+
+.blogPreview {
 	padding-bottom: 0;
 	background-color: var(--light-gray);
 }
@@ -22,8 +26,6 @@
 	flex-direction: row;
 	justify-content: flex-end;
 	background-color: var(--light-gray);
-	padding: 1rem;
-	margin: 0 2rem;
 }
 
 .previewOverlayContainer {
