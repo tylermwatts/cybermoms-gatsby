@@ -9,24 +9,27 @@ import { Link } from 'gatsby';
 
 // styles
 import * as styles from './BlogPreview.module.css';
+import { formatDate } from '../../utils';
 
 export interface BlogPreviewProps {
 	blogToPreview: {
-		authorName: string | null;
-		content: { raw: string | null } | null;
-		slug: string | null;
-		title: string | null;
+		authorName: string;
+		content: { raw: string };
+		publishDate: string;
+		slug: string;
+		title: string;
 	};
 	headerText?: string;
 }
 
 export function BlogPreview({ blogToPreview, headerText }: BlogPreviewProps) {
-	const { authorName, content, slug, title } = blogToPreview;
+	const { authorName, content, publishDate, slug, title } = blogToPreview;
 
 	return (
 		<div className={styles.blogPreviewContainer}>
 			{headerText && <h2>{headerText}</h2>}
 			<div className={styles.blogPreview}>
+				<p>Published {formatDate(publishDate)}</p>
 				<h3>{title}</h3>
 				<div className={styles.previewOverlayContainer}>
 					<div className={styles.blogContentPreview}>

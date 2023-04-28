@@ -31,6 +31,7 @@ const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 						blogToPreview={{
 							authorName: latestBlog.author.name,
 							content: latestBlog.content,
+							publishDate: latestBlog.createdAt,
 							slug: latestBlog.slug,
 							title: latestBlog.title,
 						}}

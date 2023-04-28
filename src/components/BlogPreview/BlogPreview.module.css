@@ -26,6 +26,7 @@
 	flex-direction: row;
 	justify-content: flex-end;
 	background-color: var(--light-gray);
+	gap: 1rem;
 }
 
 .previewOverlayContainer {
@@ -46,10 +47,6 @@
 	);
 }
 
-.authorName {
-	margin: 0 1rem;
-}
-
 @media screen and (max-width: 750px) {
 	.blogPreview,
 	.blogPreviewContainer,
@@ -60,20 +57,18 @@
 	.readMoreContainer {
 		padding-top: 0;
 	}
-
-	.authorName {
-		margin: 0;
-	}
-
-	.readMoreContainer {
-		gap: 1rem;
-	}
 }
 
 @media screen and (min-width: 1080px) {
 	.blogPreviewContainer {
 		max-width: 75%;
 		margin: 0 auto;
+	}
+
+	.dateAndAuthor {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
 	}
 }
 
