@@ -29,17 +29,17 @@ export function BlogPreview({ blogToPreview, headerText }: BlogPreviewProps) {
 			<div className={styles.blogPreview}>
 				<h3>{title}</h3>
 				<div className={styles.previewOverlayContainer}>
-					<div className={styles.absoluteOverlay} />
 					<div className={styles.blogContentPreview}>
 						{renderRichText(
 							content as RenderRichTextData<ContentfulRichTextGatsbyReference>
 						)}
 					</div>
+					<div className={styles.absoluteOverlay} />
 				</div>
-				<div className={styles.readMoreContainer}>
-					<p className={styles.authorName}>By {authorName}</p>
-					<Link to={`/blog/${slug}`}>Read more...</Link>
-				</div>
+			</div>
+			<div className={styles.readMoreContainer}>
+				<p className={styles.authorName}>By {authorName}</p>
+				<Link to={`/blog/${slug}`}>Read more...</Link>
 			</div>
 		</div>
 	);

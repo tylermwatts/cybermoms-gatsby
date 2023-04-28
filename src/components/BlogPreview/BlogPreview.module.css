@@ -1,7 +1,9 @@
 @import '../../css/variables.css';
 
 .blogPreview {
-	margin: 1rem 4rem;
+	margin: 0 2rem;
+	padding: 1rem;
+	padding-bottom: 0;
 	background-color: var(--light-gray);
 }
 
@@ -19,6 +21,9 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	background-color: var(--light-gray);
+	padding: 1rem;
+	margin: 0 2rem;
 }
 
 .previewOverlayContainer {
@@ -33,9 +38,9 @@
 	left: 0;
 	right: 0;
 	background: linear-gradient(
-		to top,
-		rgba(237, 237, 237, 0.6) 10%,
-		rgba(255, 255, 255, 0) 90%
+		to bottom,
+		rgba(255, 255, 255, 0) 5%,
+		rgba(237, 237, 237, 1) 95%
 	);
 }
 
@@ -44,8 +49,14 @@
 }
 
 @media screen and (max-width: 750px) {
-	.blogPreviewContainer {
+	.blogPreview,
+	.blogPreviewContainer,
+	.readMoreContainer {
 		margin: 0;
+	}
+
+	.readMoreContainer {
+		padding-top: 0;
 	}
 
 	.authorName {
@@ -53,8 +64,7 @@
 	}
 
 	.readMoreContainer {
-		flex-direction: column;
-		align-items: flex-end;
+		gap: 1rem;
 	}
 }
 
