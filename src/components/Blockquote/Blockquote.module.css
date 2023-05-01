@@ -1,0 +1,21 @@
+.blockQuoteContainer {
+	border-left-width: 0.5rem;
+	border-left-color: var(--snes-light-purple);
+	border-left-style: solid;
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+	margin: 1rem 4rem;
+	background-color: var(--light-gray);
+}
+
+.blockQuote {
+	padding: 1rem;
+	margin: 0;
+	font-style: italic;
+}
+
+@media screen and (max-width: 750px) {
+	.blockQuoteContainer {
+		margin: 1rem 2rem;
+	}
+}

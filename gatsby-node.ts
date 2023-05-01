@@ -52,8 +52,15 @@ export const createPages: GatsbyNode['createPages'] = async function ({
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
 	({ actions }) => {
-		const { createTypes } = actions;
+		const {
+			createTypes,
+			// printTypeDefinitions,
+		} = actions;
+		// printTypeDefinitions({ path: 'type-def.txt' });
+
 		const typeDefs = `
+		### Type definitions saved at 2023-05-01T17:56:56.013Z ###
+
 		enum RemoteFileFit {
 			COVER
 			FILL
@@ -933,6 +940,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 		
 		type ContentfulBlogPostContent {
 			raw: String!
+			references: [ContentfulAsset] @link(by: "id", from: "references___NODE")
 		}
 		
 		type ContentfulAuthor implements ContentfulReference & ContentfulEntry & Node @derivedTypes @dontInfer {

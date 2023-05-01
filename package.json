@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.0.3",
+    "classnames": "^2.3.2",
     "contentful": "^10.1.0",
     "gatsby": "^5.8.1",
     "gatsby-omni-font-loader": "^2.0.2",

@@ -1,0 +1,26 @@
+.embeddedImageContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+	border-radius: 0.25rem;
+	max-width: min-content;
+}
+
+.embeddedImage {
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+	aspect-ratio: 1;
+	height: max-content;
+	width: max-content;
+}
+
+.embeddedImageDescription {
+	background-color: var(--light-gray);
+	font-style: italic;
+	padding: 0.5rem;
+}
+
+.roundedBottom {
+	border-bottom-left-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}

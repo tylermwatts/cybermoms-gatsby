@@ -1,0 +1,7 @@
+.codeBlock {
+	border-radius: 5%;
+	background-color: var(--light-gray);
+	color: var(--deep-lavender);
+	max-width: fit-content;
+	padding: 0.5rem;
+}

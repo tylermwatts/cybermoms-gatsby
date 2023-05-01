@@ -1,0 +1,29 @@
+.table {
+	margin: 1rem auto;
+	border: 1px solid var(--medium-gray);
+	width: 100%;
+	border-collapse: collapse;
+	color: var(--black);
+}
+
+.tableCell,
+.tableHeader {
+	padding: 0 1rem;
+	margin: 0;
+}
+
+.tableHeader:not(:last-child) {
+	border-right: 1px solid var(--medium-gray);
+}
+
+.tableRow:nth-child(even) {
+	background-color: var(--light-gray);
+}
+
+.tableRow:not(:last-child) {
+	border-bottom: 1px solid var(--medium-gray);
+}
+
+.tableCell:not(:last-child) {
+	border-right: 1px solid var(--medium-gray);
+}

@@ -1,15 +1,33 @@
-import * as styles from './BlogPost.module.css';
+// external
 import React, { PropsWithChildren } from 'react';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import {
 	ContentfulRichTextGatsbyReference,
 	RenderRichTextData,
 	renderRichText,
 } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { INLINES, MARKS } from '@contentful/rich-text-types';
-import { Layout, SEO } from '../components';
 import { Link, PageProps, graphql } from 'gatsby';
+
+// components
+import {
+	Blockquote,
+	CodeBlock,
+	Hyperlink,
+	ImageWithDescription,
+	Layout,
+	SEO,
+	Table,
+	TableCell,
+	TableHeader,
+	TableRow,
+} from '../components';
+
+// utils
 import { formatDate } from '../utils';
+
+// styles
+import * as styles from './BlogPost.module.css';
 
 export function BlogPost({
 	data,
@@ -30,28 +48,43 @@ export function BlogPost({
 				{contentfulBlogPost?.content && (
 					<div className={styles.blogContent}>
 						{renderRichText(
-							contentfulBlogPost.content as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+							contentfulBlogPost.content as unknown as RenderRichTextData<ContentfulRichTextGatsbyReference>,
 							{
 								renderMark: {
-									[MARKS.CODE]: (text) => {
-										return (
-											<div className={styles.codeBlock}>
-												<code>{text}</code>
-											</div>
-										);
-									},
+									[MARKS.CODE]: (text) => <CodeBlock>{text}</CodeBlock>,
 								},
 								renderNode: {
 									[INLINES.HYPERLINK]: (node, children) => {
 										const { uri } = node.data;
-										return (
-											<a href={uri} target='_blank'>
-												{children}
-											</a>
-										);
+										return <Hyperlink uri={uri}>{children}</Hyperlink>;
 									},
 									[MARKS.BOLD]: (node, children) => (
-										<p style={{ fontWeight: 700 }}>{children}</p>
+										<strong style={{ fontWeight: 700 }}>{children}</strong>
+									),
+									[BLOCKS.EMBEDDED_ASSET]: (node) => {
+										const { description, gatsbyImageData } = node.data.target;
+										const image = getImage(gatsbyImageData);
+										if (image) {
+											return (
+												<ImageWithDescription
+													description={description}
+													image={image}
+												/>
+											);
+										}
+									},
+									[BLOCKS.TABLE]: (node, children) => <Table>{children}</Table>,
+									[BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
+										<TableHeader>{children}</TableHeader>
+									),
+									[BLOCKS.TABLE_ROW]: (node, children) => (
+										<TableRow>{children}</TableRow>
+									),
+									[BLOCKS.TABLE_CELL]: (node, children) => (
+										<TableCell>{children}</TableCell>
+									),
+									[BLOCKS.QUOTE]: (node, children) => (
+										<Blockquote>{children}</Blockquote>
 									),
 								},
 							}
@@ -93,6 +126,18 @@ export const query = graphql`
 			title
 			content {
 				raw
+				references {
+					... on ContentfulAsset {
+						contentful_id
+						__typename
+						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+						title
+						description
+						file {
+							url
+						}
+					}
+				}
 			}
 			createdAt
 			updatedAt
