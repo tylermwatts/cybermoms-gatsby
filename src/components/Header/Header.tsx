@@ -28,13 +28,13 @@ export function Header() {
 					</nav>
 					<div className={styles.contactIconContainer}>
 						<ContactLink
-							href={'http://instagram.com/cybermoms'}
+							href={'https://instagram.com/cyber.moms'}
 							name='Instagram Link'
 						>
 							<FaInstagram className={styles.contactIcon} />
 						</ContactLink>
 						<ContactLink
-							href={'http://facebook.com/cybermoms'}
+							href={'https://www.facebook.com/CyberMoms.io'}
 							name='Facebook Link'
 						>
 							<FaFacebookSquare className={styles.contactIcon} />
@@ -44,14 +44,16 @@ export function Header() {
 						</ContactLink>
 					</div>
 				</div>
-				<div className={styles.logoContainer}>
-					<StaticImage
-						layout='constrained'
-						src='../../assets/CyberMomsLogo_white.png'
-						alt='Cybermoms logo'
-						style={{ maxWidth: 550 }}
-					/>
-					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+				<div className={styles.logoHeaderContainer}>
+					<div className={styles.logoImageAndTextContainer}>
+						<StaticImage
+							layout='constrained'
+							src='../../assets/CyberMomsLogo_white.png'
+							alt='Cybermoms logo'
+							style={{ maxWidth: 550 }}
+						/>
+						<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+					</div>
 				</div>
 			</div>
 		</header>
