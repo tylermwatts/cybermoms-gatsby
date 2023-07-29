@@ -1,7 +1,6 @@
 @import '../../css/variables.css';
 
 .header {
-	padding: 1rem;
 	background-color: var(--pink);
 	color: var(--white);
 	display: flex;
@@ -11,39 +10,31 @@
 
 .mainHeaderSection {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
 	text-align: center;
-	gap: 2rem;
 }
 
-.cybermomsLogo {
-	height: 125px;
-	align-self: center;
-	color: var(--white);
+.logoContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: 1;
+	padding: 1rem;
+	gap: 1rem;
 }
 
 .contactIconContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	padding: 1rem 0;
-	flex-grow: 1;
+	padding: 0 1rem;
+	flex: 1;
+	gap: 2rem;
 }
 
 .contactIcon {
 	font-size: 2.5rem;
 	align-self: center;
-}
-
-.headerTextAndIconContainer {
-	display: flex;
-	flex-direction: column;
-}
-
-.headerTextContainer {
-	display: flex;
-	flex-direction: column;
 }
 
 .headerText {
@@ -57,25 +48,29 @@
 	font-size: 1.5rem;
 }
 
+.navAndIconsContainer {
+	background-color: var(--white);
+	display: flex;
+	width: 100%;
+	padding: 0.5rem 0;
+}
+
 .siteNavContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	width: 100%;
+	align-items: center;
 }
 
 .siteNavLink {
-	color: var(--white);
+	color: var(--pink);
 	font-size: 1.25rem;
 }
 
 @media screen and (max-width: 750px) {
 	.mainHeaderSection {
 		gap: 0;
-	}
-
-	.cybermomsLogo {
-		height: 75px;
 	}
 
 	.headerText {
@@ -89,13 +84,17 @@
 	.contactIcon {
 		font-size: 2rem;
 	}
+
+	.navAndIconsContainer {
+		flex-direction: column;
+	}
 }
 
 @media screen and (min-width: 1080px) {
-	.siteNavContainer {
+	/* .siteNavContainer {
 		margin: 0 auto;
 		max-width: 75%;
-	}
+	} */
 }
 
 @media screen and (min-width: 1600px) {

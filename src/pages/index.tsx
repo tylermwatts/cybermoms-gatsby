@@ -21,30 +21,28 @@ const IndexPage = (props: PageProps<Queries.IndexPageQuery>) => {
 	const [latestBlog] = allContentfulBlogPost.nodes;
 
 	return (
-		<main>
-			<Layout>
-				<article id='about'>
-					<StaticTextField body={textBody} name={name} />
-				</article>
-				<article id='latest blog'>
-					<BlogPreview
-						blogToPreview={{
-							authorName: latestBlog.author.name,
-							content: latestBlog.content,
-							publishDate: latestBlog.createdAt,
-							slug: latestBlog.slug,
-							title: latestBlog.title,
-						}}
-						headerText='Latest Blog'
-					/>
-				</article>
-				<div className={styles.blogLinkContainerStyles}>
-					<Link to='/blog'>
-						Click here to catch up on some of our other blog posts!
-					</Link>
-				</div>
-			</Layout>
-		</main>
+		<Layout>
+			<article id='about'>
+				<StaticTextField body={textBody} name={name} />
+			</article>
+			<article id='latest blog'>
+				<BlogPreview
+					blogToPreview={{
+						authorName: latestBlog.author.name,
+						content: latestBlog.content,
+						publishDate: latestBlog.createdAt,
+						slug: latestBlog.slug,
+						title: latestBlog.title,
+					}}
+					headerText='Latest Blog'
+				/>
+			</article>
+			<div className={styles.blogLinkContainerStyles}>
+				<Link to='/blog'>
+					Click here to catch up on some of our other blog posts!
+				</Link>
+			</div>
+		</Layout>
 	);
 };
 

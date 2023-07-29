@@ -36,62 +36,56 @@ export function BlogPost({
 	const authorImage = getImage(
 		contentfulBlogPost?.author.photo.gatsbyImageData || null
 	);
+
+	const richTextOutput = renderRichText(
+		contentfulBlogPost?.content as unknown as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+		{
+			renderMark: {
+				[MARKS.CODE]: (text) => <CodeBlock>{text}</CodeBlock>,
+			},
+			renderNode: {
+				[INLINES.HYPERLINK]: (node, children) => {
+					const { uri } = node.data;
+					return <Hyperlink uri={uri}>{children}</Hyperlink>;
+				},
+				[MARKS.BOLD]: (node, children) => (
+					<strong style={{ fontWeight: 700 }}>{children}</strong>
+				),
+				[BLOCKS.EMBEDDED_ASSET]: (node) => {
+					const { description, gatsbyImageData } = node.data.target;
+					const image = getImage(gatsbyImageData);
+					if (image) {
+						return (
+							<ImageWithDescription description={description} image={image} />
+						);
+					}
+				},
+				[BLOCKS.TABLE]: (node, children) => <Table>{children}</Table>,
+				[BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
+					<TableHeader>{children}</TableHeader>
+				),
+				[BLOCKS.TABLE_ROW]: (node, children) => <TableRow>{children}</TableRow>,
+				[BLOCKS.TABLE_CELL]: (node, children) => (
+					<TableCell>{children}</TableCell>
+				),
+				[BLOCKS.QUOTE]: (node, children) => <Blockquote>{children}</Blockquote>,
+			},
+		}
+	);
+
 	return (
 		<Layout>
-			<div className={styles.blogPostContainer}>
+			<article className={styles.blogPostContainer}>
 				<h2>{contentfulBlogPost?.title}</h2>
 				{contentfulBlogPost?.createdAt && (
 					<p className={styles.publishDate}>
-						Published {formatDate(contentfulBlogPost.createdAt)}
+						Published <time>{formatDate(contentfulBlogPost.createdAt)}</time>
 					</p>
 				)}
 				{contentfulBlogPost?.content && (
-					<div className={styles.blogContent}>
-						{renderRichText(
-							contentfulBlogPost.content as unknown as RenderRichTextData<ContentfulRichTextGatsbyReference>,
-							{
-								renderMark: {
-									[MARKS.CODE]: (text) => <CodeBlock>{text}</CodeBlock>,
-								},
-								renderNode: {
-									[INLINES.HYPERLINK]: (node, children) => {
-										const { uri } = node.data;
-										return <Hyperlink uri={uri}>{children}</Hyperlink>;
-									},
-									[MARKS.BOLD]: (node, children) => (
-										<strong style={{ fontWeight: 700 }}>{children}</strong>
-									),
-									[BLOCKS.EMBEDDED_ASSET]: (node) => {
-										const { description, gatsbyImageData } = node.data.target;
-										const image = getImage(gatsbyImageData);
-										if (image) {
-											return (
-												<ImageWithDescription
-													description={description}
-													image={image}
-												/>
-											);
-										}
-									},
-									[BLOCKS.TABLE]: (node, children) => <Table>{children}</Table>,
-									[BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
-										<TableHeader>{children}</TableHeader>
-									),
-									[BLOCKS.TABLE_ROW]: (node, children) => (
-										<TableRow>{children}</TableRow>
-									),
-									[BLOCKS.TABLE_CELL]: (node, children) => (
-										<TableCell>{children}</TableCell>
-									),
-									[BLOCKS.QUOTE]: (node, children) => (
-										<Blockquote>{children}</Blockquote>
-									),
-								},
-							}
-						)}
-					</div>
+					<article className={styles.blogContent}>{richTextOutput}</article>
 				)}
-				<div className={styles.authorInfo}>
+				<section id='author-info' className={styles.authorInfo}>
 					{authorImage && (
 						<GatsbyImage
 							className={styles.authorPhoto}
@@ -108,8 +102,8 @@ export function BlogPost({
 							{contentfulBlogPost?.author?.name}
 						</Link>
 					</div>
-				</div>
-			</div>
+				</section>
+			</article>
 		</Layout>
 	);
 }

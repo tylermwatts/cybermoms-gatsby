@@ -24,7 +24,7 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 	return (
 		<Layout>
 			<h2>Get to know {contentfulAuthor?.name}</h2>
-			<div className={styles.avatarAndBioContainer}>
+			<section id='author-info' className={styles.avatarAndBioContainer}>
 				{authorImage && (
 					<GatsbyImage
 						className={styles.authorPhoto}
@@ -33,9 +33,9 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 					/>
 				)}
 				<p className={styles.bioContent}>{contentfulAuthor?.bio?.bio}</p>
-			</div>
+			</section>
 			{blogPosts.length ? (
-				<div>
+				<section id='blog-posts'>
 					<h2>Author's Posts</h2>
 					<ul>
 						{blogPosts.map((post) => {
@@ -44,13 +44,16 @@ export function Author({ data }: PageProps<Queries.AuthorsQuery>) {
 								<li key={id}>
 									<Link to={`/blog/${slug}`}>{title}</Link>
 									{createdAt !== null && (
-										<span> - {formatDate(createdAt)}</span>
+										<span>
+											{' '}
+											- <time>{formatDate(createdAt)}</time>
+										</span>
 									)}
 								</li>
 							);
 						})}
 					</ul>
-				</div>
+				</section>
 			) : null}
 		</Layout>
 	);

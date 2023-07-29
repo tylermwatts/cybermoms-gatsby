@@ -5,7 +5,7 @@ export * from './ContactLink/ContactLink';
 export * from './Header/Header';
 export * from './Hyperlink/Hyperlink';
 export * from './ImageWithDescription/ImageWithDescription';
-export * from './Layout/Layout';
+export * from '../Layouts/Layout/Layout';
 export * from './StaticTextField/StaticTextField';
 export * from './SEO/SEO';
 export * from './Table/Table';

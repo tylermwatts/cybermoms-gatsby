@@ -2,12 +2,10 @@
 import React from 'react';
 import { FaEnvelope, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 
 // components
 import ContactLink from '../ContactLink/ContactLink';
-
-// assets
-import CybermomsLogo from '../../assets/cybermomslogo_bw.svg';
 
 // styles
 import * as styles from './Header.module.css';
@@ -16,10 +14,18 @@ export function Header() {
 	return (
 		<header className={styles.header}>
 			<div className={styles.mainHeaderSection}>
-				<CybermomsLogo className={styles.cybermomsLogo} />
-				<div className={styles.headerTextAndIconContainer}>
-					<h1 className={styles.headerText}>CYBERMOMS</h1>
-					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+				<div className={styles.navAndIconsContainer}>
+					<nav className={styles.siteNavContainer}>
+						<Link className={styles.siteNavLink} to='/'>
+							Home
+						</Link>
+						<Link className={styles.siteNavLink} to='/blog'>
+							Blog Posts
+						</Link>
+						<Link className={styles.siteNavLink} to='/author'>
+							Authors
+						</Link>
+					</nav>
 					<div className={styles.contactIconContainer}>
 						<ContactLink
 							href={'http://instagram.com/cybermoms'}
@@ -38,18 +44,16 @@ export function Header() {
 						</ContactLink>
 					</div>
 				</div>
+				<div className={styles.logoContainer}>
+					<StaticImage
+						layout='constrained'
+						src='../../assets/CyberMomsLogo_white.png'
+						alt='Cybermoms logo'
+						style={{ maxWidth: 550 }}
+					/>
+					<h2 className={styles.subHeaderText}>Cyber Parenting Made Easy</h2>
+				</div>
 			</div>
-			<nav className={styles.siteNavContainer}>
-				<Link className={styles.siteNavLink} to='/'>
-					Home
-				</Link>
-				<Link className={styles.siteNavLink} to='/blog'>
-					Blog Posts
-				</Link>
-				<Link className={styles.siteNavLink} to='/author'>
-					Authors
-				</Link>
-			</nav>
 		</header>
 	);
 }

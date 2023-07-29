@@ -29,7 +29,9 @@ export function BlogPreview({ blogToPreview, headerText }: BlogPreviewProps) {
 		<div className={styles.blogPreviewContainer}>
 			{headerText && <h2>{headerText}</h2>}
 			<div className={styles.blogPreview}>
-				<p>Published {formatDate(publishDate)}</p>
+				<p>
+					Published <time>{formatDate(publishDate)}</time>
+				</p>
 				<h3>{title}</h3>
 				<div className={styles.previewOverlayContainer}>
 					<div className={styles.blogContentPreview}>
@@ -41,7 +43,7 @@ export function BlogPreview({ blogToPreview, headerText }: BlogPreviewProps) {
 				</div>
 			</div>
 			<div className={styles.readMoreContainer}>
-				<p className={styles.authorName}>By {authorName}</p>
+				<p>By {authorName}</p>
 				<Link to={`/blog/${slug}`}>Read more...</Link>
 			</div>
 		</div>

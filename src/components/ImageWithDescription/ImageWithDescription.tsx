@@ -14,7 +14,7 @@ export function ImageWithDescription({
 	image,
 }: ImageWithDescriptionProps) {
 	return (
-		<div className={styles.embeddedImageContainer}>
+		<figure className={styles.embeddedImageContainer}>
 			<GatsbyImage
 				alt={description || 'Embedded image'}
 				className={classNames(
@@ -24,9 +24,16 @@ export function ImageWithDescription({
 				image={image}
 			/>
 			{description ? (
-				<p className={styles.embeddedImageDescription}>{description}</p>
+				<figcaption
+					className={classNames(
+						styles.embeddedImageDescription,
+						styles.roundedBottom
+					)}
+				>
+					{description}
+				</figcaption>
 			) : null}
-		</div>
+		</figure>
 	);
 }
 

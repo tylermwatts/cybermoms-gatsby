@@ -2,17 +2,19 @@
 import React, { PropsWithChildren } from 'react';
 
 // components
-import Header from '../Header/Header';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 
 // styles
 import * as styles from './Layout.module.css';
 
 export function Layout({ children }: PropsWithChildren) {
 	return (
-		<div>
+		<main>
 			<Header />
-			<div className={styles.childContainer}>{children}</div>
-		</div>
+			<section className={styles.childContainer}>{children}</section>
+			<Footer />
+		</main>
 	);
 }
 
